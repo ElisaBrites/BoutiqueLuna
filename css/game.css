@@ -1,0 +1,61 @@
+/* ============================================================
+   BOUTIQUE LUNA — efectos del salón
+   ============================================================ */
+
+.fx-float {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 0 #a63a60, -2px 2px 0 #a63a60, 2px -2px 0 #a63a60, -2px -2px 0 #a63a60;
+  animation: float-up 1.4s steps(8) forwards;
+  white-space: nowrap;
+}
+.fx-float.gold { color: #ffd45c; }
+@keyframes float-up {
+  0% { opacity: 0; transform: translate(-50%, -40%) scale(.7); }
+  20% { opacity: 1; transform: translate(-50%, -60%) scale(1.05); }
+  100% { opacity: 0; transform: translate(-50%, -160%) scale(1); }
+}
+
+.fx-coin, .fx-heart {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  animation: fx-pop 1.2s steps(6) forwards;
+}
+.fx-coin img, .fx-heart img { width: 100%; height: 100%; }
+.fx-coin { animation-name: coin-fly; animation-duration: 1.3s; }
+.fx-heart { animation-name: heart-fly; animation-duration: 1.2s; }
+@keyframes coin-fly {
+  0% { opacity: 0; transform: translate(0, 0) scale(.6); }
+  15% { opacity: 1; transform: translate(0, -14px) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx, 0), -96px) scale(.8); }
+}
+@keyframes heart-fly {
+  0% { opacity: 0; transform: translate(0, 0) scale(.6); }
+  20% { opacity: 1; transform: translate(0, -10px) scale(1.1); }
+  100% { opacity: 0; transform: translate(var(--dx, 0), -70px) scale(.85); }
+}
+@keyframes fx-pop {
+  from { opacity: 0; transform: scale(.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.confetti-holder {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2000;
+}
+.confetti {
+  position: absolute;
+  top: -20px;
+  animation: confetti-fall var(--dur, 2.6s) linear var(--delay, 0s) forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0); opacity: 1; }
+  100% { transform: translateY(760px) rotate(var(--rot, 360deg)); opacity: .9; }
+}

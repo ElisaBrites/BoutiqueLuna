@@ -1,0 +1,186 @@
+/* ============================================================
+   BOUTIQUE LUNA — salón y capa de juego
+   ============================================================ */
+
+#game { background: #ffe0ec; }
+
+.room {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #ffe0ec;
+}
+#scene {
+  display: block;
+  width: 1600px;
+  height: 900px;
+  image-rendering: auto;
+  filter: saturate(1.04) contrast(1.01);
+}
+
+/* ---------------- objetivo del nivel ---------------- */
+.level-chip {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  width: 386px;
+  padding: 9px 13px 10px;
+  background: var(--cream);
+  border: 3px solid var(--line);
+  box-shadow: 0 6px 0 rgba(138, 74, 99, .35), inset 0 0 0 3px #ffeaf2;
+  z-index: 60;
+}
+.level-chip-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.level-chip-top > span:first-child {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5a2b3f;
+  white-space: nowrap;
+}
+.goal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  color: #8a5a17;
+  background: #fff3d8;
+  border: 2px solid #e0b45c;
+  padding: 1px 7px 1px 4px;
+}
+.goal-pill img { width: 20px; height: 20px; }
+.goal-track {
+  height: 9px;
+  margin-top: 7px;
+  background: #f3dbe5;
+  border: 2px solid #e4bccd;
+}
+.goal-bar {
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(90deg, #ff86ae 0 8px, #ff9fbe 8px 16px);
+  transition: width .25s steps(4);
+}
+
+/* ---------------- manos ---------------- */
+.hands-label {
+  position: absolute;
+  right: 26px;
+  bottom: 142px;
+  padding: 4px 10px;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #8a4a63;
+  background: rgba(255, 250, 243, .92);
+  border: 2px solid #d9a566;
+  z-index: 60;
+}
+.hands-label.full { color: #fff; background: #d94f7f; border-color: #8a3356; }
+.hands-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  color: #5a2b3f;
+  background: #ffd45c;
+  border: 2px solid #8a3356;
+  vertical-align: middle;
+}
+
+/* ---------------- pista ---------------- */
+.hint-card {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  max-width: 610px;
+  min-height: 56px;
+  padding: 8px 16px 8px 10px;
+  background: var(--cream);
+  border: 3px solid var(--line);
+  box-shadow: 0 5px 0 rgba(138, 74, 99, .35), inset 0 0 0 3px #ffeaf2;
+  z-index: 60;
+}
+.hint-step {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: #5a2b3f;
+  background: #ffd45c;
+  border: 2px solid #8a3356;
+  box-shadow: inset 0 -3px 0 #e0a92c;
+}
+.hint-step.hidden { display: none; }
+.hint-ico {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  background: #ffe3ee;
+  border: 2px solid #eab6ca;
+}
+.hint-ico img { display: block; }
+.hint-text { font-size: 18px; line-height: 1.25; color: #6b4455; }
+.hint-text b { color: var(--rose-d); }
+.hint-card.bump { animation: hint-bump .3s steps(3); }
+@keyframes hint-bump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* ---------------- tutorial ---------------- */
+.tutorial-pointer {
+  position: absolute;
+  z-index: 70;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: tut-bounce .8s steps(2) infinite;
+}
+.tut-hand { line-height: 0; filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .2)); }
+.tut-hand img { display: block; }
+.tut-label {
+  margin-top: 2px;
+  padding: 3px 9px;
+  font-size: 15px;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--rose);
+  border: 2px solid #8a3356;
+}
+@keyframes tut-bounce {
+  0%, 100% { transform: translate(-50%, -100%); }
+  50% { transform: translate(-50%, -112%); }
+}
+
+/* ---------------- capa de efectos ---------------- */
+.fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 65;
+  overflow: hidden;
+}

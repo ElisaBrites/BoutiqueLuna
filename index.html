@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffd9e8">
+<title>Boutique Luna · Tienda de vestidos</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/room.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/ui.css">
+<link rel="stylesheet" href="css/cartoon.css">
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- ============================ HOME ============================ -->
+  <section id="home" class="screen">
+    <div class="home-wall"></div>
+    <div class="home-baseboard"></div>
+    <div class="home-floor"></div>
+    <div class="home-sparkles" aria-hidden="true">
+      <span style="left:10%;top:20%">✦</span>
+      <span style="left:26%;top:11%">✧</span>
+      <span style="left:74%;top:8%">✦</span>
+      <span style="left:90%;top:24%">✧</span>
+      <span style="left:62%;top:15%">✦</span>
+    </div>
+
+    <header class="home-header">
+      <div class="brand">
+        <div class="brand-mark" id="brandMark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <h1>Boutique Luna</h1>
+          <p>vestidos con amor</p>
+        </div>
+      </div>
+      <button id="homeMenuBtn" class="menu-btn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="home-panel">
+      <div class="home-panel-top">
+        <div>
+          <span class="kicker">Tu aventura</span>
+          <h2>Elige un nivel</h2>
+        </div>
+        <div class="total-stars" id="totalStars" aria-label="Estrellas conseguidas"></div>
+      </div>
+
+      <div id="levelCards" class="level-cards"></div>
+
+      <div class="home-actions">
+        <button id="playBtn" class="btn btn-play">
+          <span class="play-tri" aria-hidden="true"></span>
+          <span id="playLabel">Jugar</span>
+        </button>
+        <button id="shopBtn" class="btn btn-shop">
+          <span class="shop-cart" aria-hidden="true">🛍️</span>
+          <span>Tienda de mejoras</span>
+          <span id="shopBadge" class="shop-badge hidden">0</span>
+        </button>
+      </div>
+
+      <div id="homeNote" class="home-note"></div>
+    </div>
+
+    <div class="mascot-wrap">
+      <div class="mascot-bubble" id="mascotBubble">
+        <strong>¡Hola! Soy Luna</strong>
+        <span>¿Me ayudas con la tienda?</span>
+      </div>
+      <div id="mascot" class="mascot"></div>
+      <div class="mascot-name">Luna</div>
+    </div>
+
+    <div class="home-plant" aria-hidden="true">
+      <span class="lp l1"></span><span class="lp l2"></span><span class="lp l3"></span>
+      <span class="pot"></span>
+    </div>
+  </section>
+
+  <!-- ============================ GAME ============================ -->
+  <section id="game" class="screen hidden">
+    <div class="room" id="room">
+      <canvas id="scene" width="1600" height="900" aria-label="Salón de la boutique"></canvas>
+    </div>
+
+    <div id="fx" class="fx"></div>
+
+    <div class="level-chip" id="levelChip">
+      <div class="level-chip-top">
+        <span id="levelChipName">Nivel 1 · Día de estreno</span>
+        <span class="goal-pill"><img class="pixel coin-img" id="goalCoin" alt=""><b id="goalText">0 / 9</b></span>
+      </div>
+      <div class="goal-track"><div id="goalBar" class="goal-bar"></div></div>
+    </div>
+
+    <button id="gameMenuBtn" class="menu-btn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="hands-label" id="handsLabel">Manos 0/2</div>
+
+    <div class="hint-card" id="hintCard">
+      <div class="hint-step hidden" id="hintStep" aria-label="Paso actual">1</div>
+      <div class="hint-ico" id="hintIco">✦</div>
+      <div class="hint-text" id="hintText">Espera a la primera clienta…</div>
+    </div>
+
+    <div class="tutorial-pointer hidden" id="tutorialPointer" aria-hidden="true">
+      <div class="tut-hand" id="tutHand"></div>
+      <div class="tut-label">¡Toca aquí!</div>
+    </div>
+  </section>
+
+  <!-- ============================ HUD ============================ -->
+  <div id="hud" class="hud hidden">
+    <div class="hud-coins" aria-label="Monedas">
+      <span class="coin-ico" aria-hidden="true"></span>
+      <b class="js-coins">0</b>
+    </div>
+    <div class="hud-sep"></div>
+    <div class="hud-lives">
+      <div class="js-hearts hearts" aria-label="Vidas"></div>
+      <span class="js-life-timer life-timer hidden"></span>
+    </div>
+  </div>
+
+  <!-- ============================ SPLASH ============================ -->
+  <div id="splash" class="splash">
+    <div class="splash-vignette"></div>
+    <div class="splash-sparkles" aria-hidden="true">
+      <span style="left:16%;top:18%">✦</span>
+      <span style="left:24%;top:70%">✧</span>
+      <span style="left:78%;top:14%">✦</span>
+      <span style="left:85%;top:68%">✧</span>
+      <span style="left:65%;top:82%">✦</span>
+      <span style="left:10%;top:45%">✧</span>
+    </div>
+    <div class="splash-card">
+      <div class="splash-dresses" id="splashDresses" aria-hidden="true"></div>
+      <span class="kicker">Un juego de vestidos y amigas</span>
+      <h1>Boutique <em>Luna</em></h1>
+      <p>Ayuda a Luna a atender su tienda, vestir a las clientas y ganar monedas.</p>
+      <button id="enterBtn" class="btn btn-enter">
+        <span>Entrar a la boutique</span>
+        <span class="enter-arrow">→</span>
+      </button>
+      <div class="splash-hint">Se juega con el mouse · Mejor en pantalla completa</div>
+    </div>
+  </div>
+
+  <!-- ============================ OVERLAYS ============================ -->
+  <div id="overlays" class="overlays"></div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/play.js"></script>
+</body>
+</html>
